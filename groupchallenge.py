@@ -15,7 +15,7 @@ ran_num3 = random.randint(1,1000)
 attempts = 0
 
 
-def attempt(ran_num, attempts, rounds):
+def attempt(ran_num, attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3):
     if difficulty == "1-10": 
         random_num = ran_num1 
     elif difficulty == "1-50":
@@ -25,7 +25,7 @@ def attempt(ran_num, attempts, rounds):
     if rounds > 0:
         user_guess = int(input("What is your guess? 1-10"))
         time1 = time.time()
-        if user_guess == ran_num:
+        if user_guess == random_num:
             print(f"It took you: {attempts} attempts to guess the number")
             rounds -= 1
             time2 = time.time()
@@ -41,4 +41,4 @@ def attempt(ran_num, attempts, rounds):
                 attempt(ran_num, attempts)
     else:
         print("End of game!")
-attempt(ran_num, attempts)
+attempt(ran_num, attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
