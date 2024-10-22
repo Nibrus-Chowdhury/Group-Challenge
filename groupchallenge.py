@@ -15,30 +15,33 @@ ran_num3 = random.randint(1,1000)
 attempts = 0
 
 
-def attempt(ran_num, attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3):
+def attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3):
     if difficulty == "1-10": 
         random_num = ran_num1 
     elif difficulty == "1-50":
         random_num = ran_num2
     else: 
         random_num = ran_num3
-    if rounds > 0:
-        user_guess = int(input("What is your guess? 1-10"))
-        time1 = time.time()
-        if user_guess == random_num:
-            print(f"It took you: {attempts} attempts to guess the number")
-            rounds -= 1
-            time2 = time.time()
-            print('Response time: ', time2 - time1)
+    time1 = time.time()
+    user_guess = int(input("What is your guess?"))
+    if user_guess == random_num:
+        print(f"It took you: {attempts} attempts to guess the number")
+        rounds -= 1
+        time2 = time.time()
+        print('Response time: ', time2 - time1)
+        if rounds > 0:
+            print("\nNew Round:")
+            attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
         else:
-            attempts += 1
-            print('Response time: ', time2 - time1)
-            if user_guess > ran_num:
-                print("Too high")
-                attempt(ran_num, attempts)
-            else:
-                print("Too low")
-                attempt(ran_num, attempts)
+            print("End of game!")
     else:
-        print("End of game!")
-attempt(ran_num, attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
+        attempts += 1
+        time2 = time.time()
+        print('Response time: ', time2 - time1)
+        if user_guess > random_num:
+            print("Too high")
+            attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
+        else:
+            print("Too low")
+            attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
+attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
