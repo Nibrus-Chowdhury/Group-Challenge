@@ -31,9 +31,9 @@ def attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3):
         rounds -= 1
         #ends timer and gives response
         time2 = time.time()
-        print('Response time: ', time2 - time1)
+        print('Response time: {:0.2f} seconds'.format(time2-time1))
         if rounds > 0:
-            print("\nNew Round:")
+            print("\nNew Round")
             attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
         else:
             print("End of game!")
@@ -41,7 +41,7 @@ def attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3):
         attempts += 1
         #ends timer and gives response
         time2 = time.time()
-        print('Response time: ', time2 - time1)
+        print('Response time: {:0.2f} seconds'.format(time2-time1))
         if user_guess > random_num:
             print("Too high")
             attempt(attempts, rounds, difficulty, ran_num1, ran_num2, ran_num3)
